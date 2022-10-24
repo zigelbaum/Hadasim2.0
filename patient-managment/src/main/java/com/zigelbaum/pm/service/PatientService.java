@@ -7,6 +7,8 @@ import com.zigelbaum.pm.api.Patient;
 public interface PatientService {
 	
 	List<Patient>loadPatients();
+	
+	Patient loadPatient(int id);
 
 	void savePatient(Patient patient);
 

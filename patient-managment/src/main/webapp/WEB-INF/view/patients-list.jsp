@@ -41,6 +41,7 @@
 					<td>${patient.date_of_birth}
 					<td>${patient.tel_num}
 					<td>${patient.cell_num}</td>
+					<td><a href="/patient-managment/showUpdatePatient?patientId=${patient.id}"> Update</a></td>
 				</tr>
 			</c:forEach>
 		</table>

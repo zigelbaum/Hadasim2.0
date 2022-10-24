@@ -31,4 +31,10 @@ public class PatientServiceImpl implements PatientService {
 		
 	}
 
+	@Override
+	public Patient loadPatient(int id) {
+	
+		return patientDAO.loadPatient(id);
+	}
+
 }

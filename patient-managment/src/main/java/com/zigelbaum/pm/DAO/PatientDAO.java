@@ -8,6 +8,8 @@ public interface PatientDAO {
 	
 	List<Patient>loadPatients();
 	
+	Patient loadPatient(int id);
+	
 	void savePatient(Patient patient);
 
 }

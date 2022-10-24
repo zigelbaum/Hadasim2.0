@@ -5,18 +5,19 @@ import java.util.Date;
 
 public class Patient {
 
-	private int id;
+	private Integer id;
+	
 	private String last_name;
 	private String first_name;
 	private String address;
 	private Date date_of_birth;
-	private long tel_num;
-	private long cell_num;
+	private Long tel_num = null;
+	private Long cell_num = null;
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getLast_name() {
@@ -43,18 +44,22 @@ public class Patient {
 	public void setDate_of_birth(Date date_of_birth) {
 		this.date_of_birth = date_of_birth;
 	}
-	public long getTel_num() {
+	public Long getTel_num() {
 		return tel_num;
 	}
-	public void setTel_num(long tel_num) {
+	public void setTel_num(Long tel_num) {
 		this.tel_num = tel_num;
 	}
-	public long getCell_num() {
+	public Long getCell_num() {
 		return cell_num;
 	}
-	public void setCell_num(long cell_num) {
+	public void setCell_num(Long cell_num) {
 		this.cell_num = cell_num;
 	}
+
+
+
+
 	
 	@Override
 	public String toString() {

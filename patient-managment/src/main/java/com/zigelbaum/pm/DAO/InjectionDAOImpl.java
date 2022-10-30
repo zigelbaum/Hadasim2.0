@@ -20,13 +20,12 @@ public class InjectionDAOImpl implements InjectionDAO {
 	@Override
 	public List<Injection> loadInjections() {
 		
-		System.out.println("in dao");
 		String sql = "SELECT * FROM injections";
-		// the rowmapper will be executed as the number of thr rows in the patients
+		
+		// the rowmapper will be executed as the number of the rows in the patients
 		// table	
 		List<Injection> injectionList = jdbcTemplate.query(sql, new InjectionRowMapper());
 
-		System.out.println(injectionList);
 		return injectionList;
 	}
 
@@ -38,8 +37,15 @@ public class InjectionDAOImpl implements InjectionDAO {
 
 	@Override
 	public void saveInjection(Injection injection) {
-		// TODO Auto-generated method stub
 		
+		Object[] sqlParamsObjects = {injection.getId(), injection.getDate(), injection.getCompany()};
+		
+		String sql = "insert into injections(id, date, company) values(?,?,?)";
+	
+		jdbcTemplate.update(sql,sqlParamsObjects);
+		
+		System.out.println("record inserted");
+
 	}
 
 	@Override

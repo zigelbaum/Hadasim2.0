@@ -8,4 +8,6 @@ public interface InjectionService {
 
 	List<Injection> loadInjections();
 
+	void saveInjection(Injection injection);
+
 }

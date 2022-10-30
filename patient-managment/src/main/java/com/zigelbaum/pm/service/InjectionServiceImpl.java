@@ -19,10 +19,16 @@ public class InjectionServiceImpl implements InjectionService {
 	@Override
 	public List<Injection> loadInjections() {
 		
-		System.out.println("sending request to dao");
-
 		List<Injection> injectionList = injectionDAO.loadInjections();		
 		return injectionList;
+	}
+
+	
+	@Override
+	public void saveInjection(Injection injection) {
+		
+		injectionDAO.saveInjection(injection);
+		
 	}
 
 }

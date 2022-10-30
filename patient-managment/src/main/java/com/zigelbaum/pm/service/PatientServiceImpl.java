@@ -26,7 +26,6 @@ public class PatientServiceImpl implements PatientService {
 	public void savePatient(Patient patient) {
 		
 		//TODO make security tests
-		List<Patient> patients = patientDAO.loadPatients();
 		
 		patientDAO.savePatient(patient);
 		

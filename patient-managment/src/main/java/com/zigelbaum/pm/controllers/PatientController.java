@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.zigelbaum.pm.api.Injection;
 import com.zigelbaum.pm.api.Patient;
+import com.zigelbaum.pm.api.Positive;
 import com.zigelbaum.pm.service.InjectionService;
 import com.zigelbaum.pm.service.InjectionServiceImpl;
 import com.zigelbaum.pm.service.PatientService;
+import com.zigelbaum.pm.service.PositiveService;
 
 @Controller
 public class PatientController {
@@ -24,6 +26,9 @@ public class PatientController {
 	
 	@Autowired
 	private InjectionService injectionService;
+	
+	@Autowired
+	private PositiveService positiveService;
 	
 	// method that return the patient-list.jsp page - presentation layer
 	@GetMapping("/showPatient")
@@ -37,6 +42,7 @@ public class PatientController {
 		return "patients-list";
 	}
 
+	
 	// method that return the add-student.jsp page - presentation layer
 	@GetMapping("/showAddPatient")
 	public String addPatients(Model model) {
@@ -48,6 +54,7 @@ public class PatientController {
 		return "add-patient";
 	}
 
+	
 	@PostMapping("/save-patient")
 	public String savePatient(Patient patient) {
 
@@ -57,6 +64,7 @@ public class PatientController {
 		return "redirect:/showPatient";
 	}
 
+	
 	// method that return the add-student.jsp page - presentation layer but for
 	// update (with information of the user)
 	@GetMapping("/showUpdatePatient")
@@ -71,6 +79,7 @@ public class PatientController {
 		return "update-patient";
 	}
 
+	
 	@PostMapping("/update-patient")
 	public String insertUpdatePatient(Patient patient) {
 
@@ -80,6 +89,7 @@ public class PatientController {
 		return "redirect:/showPatient";
 	}
 
+	
 	// method to to show delete page
 	@GetMapping("/showDeletePatient")
 	public String deletePatient(@RequestParam("patientId") Integer id) {
@@ -91,6 +101,7 @@ public class PatientController {
 
 		return "redirect:/showPatient";
 	}
+	
 	
 	// method that return the patient-list.jsp page - presentation layer
 		@GetMapping("/showInjection")
@@ -105,4 +116,15 @@ public class PatientController {
 		}
 	
 
+		// method that return the patient-list.jsp page - presentation layer
+				@GetMapping("/showPositives")
+				public String showPositivesList(Model model) {
+					
+					// call the service method to get the data
+					List<Positive> positivesList = positiveService.loadPositives();
+
+					model.addAttribute("positives", positivesList);
+
+					return "positives-list";
+				}
 }

@@ -13,7 +13,7 @@ public class PatientAppInitializer extends AbstractAnnotationConfigDispatcherSer
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
 
-		Class[] configFiles = {PatientAppConfig.class};
+		Class<?>[] configFiles = {PatientAppConfig.class};
 		
 		return configFiles;
 	}

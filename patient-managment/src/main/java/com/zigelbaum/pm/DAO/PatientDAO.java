@@ -12,4 +12,8 @@ public interface PatientDAO {
 	
 	void savePatient(Patient patient);
 
+	void update(Patient patient);
+
+	void deletePatient(Integer id);
+
 }

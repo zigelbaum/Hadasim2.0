@@ -3,7 +3,6 @@ package com.zigelbaum.pm.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.zigelbaum.pm.DAO.PatientDAO;
@@ -27,6 +26,8 @@ public class PatientServiceImpl implements PatientService {
 	public void savePatient(Patient patient) {
 		
 		//TODO make security tests
+		List<Patient> patients = patientDAO.loadPatients();
+		
 		patientDAO.savePatient(patient);
 		
 	}
@@ -35,6 +36,18 @@ public class PatientServiceImpl implements PatientService {
 	public Patient loadPatient(int id) {
 	
 		return patientDAO.loadPatient(id);
+	}
+
+	@Override
+	public void updatePatient(Patient patient) {
+
+		patientDAO.update(patient);
+		
+	}
+
+	@Override
+	public void deletePatient(Integer id) {
+		patientDAO.deletePatient(id);
 	}
 
 }

@@ -9,7 +9,7 @@
 </head>
 <body>
 
-	<h1 align="center">Zigelbaum</h1>
+	<h1 align="center">Patients</h1>
 	<div align="center">
 
 		<form action="showAddPatient">
@@ -42,10 +42,30 @@
 					<td>${patient.tel_num}
 					<td>${patient.cell_num}</td>
 					<td><a href="/patient-managment/showUpdatePatient?patientId=${patient.id}"> Update</a></td>
+					<td><a href="/patient-managment/showDeletePatient?patientId=${patient.id}"> Delete</a></td>
+
 				</tr>
 			</c:forEach>
+			
+			
+			
 		</table>
-	</div>
+		
+		
+		<br/>
+	
+	
+	<form action="showInjection">
+			<input type="submit" value="Injections">
+		</form>
+		
+		<br/>
+		
+		<form action="showPositives">
+			<input type="submit" value="Positives">
+		</form>
+		
+		</div>
 
 
 </body>

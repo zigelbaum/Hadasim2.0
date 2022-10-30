@@ -1,5 +1,6 @@
 package com.zigelbaum.pm.DAO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +52,24 @@ public class PatientDAOImpl implements PatientDAO {
 		String sql = "select * from patients where id = ?";
 		Patient patient = jdbcTemplate.queryForObject(sql, new PatientRowMapper(), id);
 		return patient;
+	}
+
+	@Override
+	public void update(Patient patient) {
+
+		String sql = "UPDATE patients SET last_name=?, first_name=?, address=?, tel_num=?, cell_num=? WHERE id = ?";
+		jdbcTemplate.update(sql, patient.getLast_name(),patient.getFirst_name(),patient.getAddress(),patient.getTel_num(),
+										patient.getCell_num(),patient.getId());
+		System.out.println("patient has been updated");
+		
+	}
+
+	@Override
+	public void deletePatient(Integer id) {
+		
+		String sql = "DELETE FROM patients WHERE id = ?";
+		jdbcTemplate.update(sql, id);
+		
 	}
 
 }

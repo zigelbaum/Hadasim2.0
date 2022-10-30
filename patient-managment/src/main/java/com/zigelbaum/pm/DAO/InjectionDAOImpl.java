@@ -1,5 +1,6 @@
 package com.zigelbaum.pm.DAO;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +41,7 @@ public class InjectionDAOImpl implements InjectionDAO {
 		
 		Object[] sqlParamsObjects = {injection.getId(), injection.getDate(), injection.getCompany()};
 		
-		String sql = "insert into injections(id, date, company) values(?,?,?)";
+		String sql = "INSERT INTO injections(id, date, company) values(?,?,?)";
 	
 		jdbcTemplate.update(sql,sqlParamsObjects);
 		
@@ -48,22 +49,37 @@ public class InjectionDAOImpl implements InjectionDAO {
 
 	}
 
+
 	@Override
-	public void updateInjection(Injection injection) {
-		// TODO Auto-generated method stub
+	public void update(Injection injection) {
 		
+		String sql = "UPDATE injections SET company=? WHERE id=? AND date=?";
+		jdbcTemplate.update(sql, injection.getCompany(), injection.getId(), injection.getDate());
+	}
+
+	@Override
+	public Injection loadInjection(Integer id, Date date) {
+		
+		Object[] sqlParamsObjects = {id, date};
+		
+		String sql = "SELECT * FROM injections WHERE id = ? AND date = ?";
+		Injection injection = jdbcTemplate.queryForObject(sql, sqlParamsObjects, new InjectionRowMapper());
+		return injection;
+	}
+	
+	
+	@Override
+	public Injection loadInjections(Integer id) {
+		
+		String sql = "SELECT * FROM injections WHERE id = ?";
+		Injection injection = jdbcTemplate.queryForObject(sql, new InjectionRowMapper(), id);
+		return injection;
 	}
 
 	@Override
 	public void deleteInjection(Integer id) {
 		// TODO Auto-generated method stub
 		
-	}
-
-	@Override
-	public List<Injection> loadPatients() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	

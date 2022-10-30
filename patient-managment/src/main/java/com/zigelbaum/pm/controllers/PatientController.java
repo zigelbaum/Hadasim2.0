@@ -1,6 +1,7 @@
 package com.zigelbaum.pm.controllers;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -107,20 +108,7 @@ public class PatientController {
 		model.addAttribute("injections", injectionList);
 
 		return "injection-list";
-	}
-
-	// method that return the patient-list.jsp page - presentation layer
-	@GetMapping("/showPositives")
-	public String showPositivesList(Model model) {
-
-		// call the service method to get the data
-		List<Positive> positivesList = positiveService.loadPositives();
-
-		model.addAttribute("positives", positivesList);
-
-		return "positives-list";
-	}
-	
+	}	
 	
 	
 	// method that return the add-injection.jsp page - presentation layer
@@ -142,5 +130,35 @@ public class PatientController {
 			injectionService.saveInjection(injection);
 
 			return "redirect:/showInjection";
+		}
+		
+		
+		// method that return the add-student.jsp page - presentation layer but for
+		// update (with information of the user)
+		@GetMapping("/showUpdateInjection")
+		public String updateInjection(@RequestParam("injectionId") Integer id, @RequestParam("injectDate") Date date, Model model) {
+
+			System.out.println("looking date for the injection of id: " + id + " from: " + date);
+			// getting data from db
+			Injection userInjection = injectionService.loadInjection(id, date);
+			// System.out.println(user);
+			model.addAttribute("injection", userInjection);
+			// sending data to view
+			return "update-injection";
+		}
+		
+		
+		
+		
+		// method that return the patient-list.jsp page - presentation layer
+		@GetMapping("/showPositives")
+		public String showPositivesList(Model model) {
+
+			// call the service method to get the data
+			List<Positive> positivesList = positiveService.loadPositives();
+
+			model.addAttribute("positives", positivesList);
+
+			return "positives-list";
 		}
 }

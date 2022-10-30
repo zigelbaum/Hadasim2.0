@@ -1,5 +1,6 @@
 package com.zigelbaum.pm.DAO;
 
+import java.util.Date;
 import java.util.List;
 
 import com.zigelbaum.pm.api.Injection;
@@ -12,10 +13,12 @@ public interface InjectionDAO {
 	
 	void saveInjection(Injection injection);
 
-	void updateInjection(Injection injection);
+	void update(Injection injection);
 
 	void deleteInjection(Integer id);
 
-	List<Injection> loadPatients();
+	Injection loadInjection(Integer id, Date date);
+
+	Injection loadInjections(Integer id);
 
 }

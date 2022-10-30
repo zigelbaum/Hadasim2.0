@@ -1,5 +1,6 @@
 package com.zigelbaum.pm.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,13 @@ public class InjectionServiceImpl implements InjectionService {
 		
 		injectionDAO.saveInjection(injection);
 		
+	}
+
+
+	@Override
+	public Injection loadInjection(Integer id, Date date) {
+		
+		return injectionDAO.loadInjection(id, date);
 	}
 
 }

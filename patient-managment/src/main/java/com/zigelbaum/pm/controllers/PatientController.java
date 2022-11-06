@@ -32,6 +32,15 @@ public class PatientController {
 	private PositiveService positiveService;
 
 	// method that return the patient-list.jsp page - presentation layer
+	@GetMapping("/patient-managment/")
+	public String showMain() {
+		
+		return "welcome-page";
+			
+	}
+	
+	
+	// method that return the patient-list.jsp page - presentation layer
 	@GetMapping("/showPatient")
 	public String showPatientsList(Model model) {
 

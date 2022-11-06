@@ -1,13 +1,12 @@
 package com.zigelbaum.pm.api;
 
+import java.sql.Date;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class Patient {
 
 	private Integer id;
-	
-	private String last_name;
 	private String first_name;
 	private String address;
 	private Date date_of_birth;
@@ -56,20 +55,13 @@ public class Patient {
 	public void setCell_num(Long cell_num) {
 		this.cell_num = cell_num;
 	}
-
-
-
-
 	
+
+	private String last_name;
 	@Override
 	public String toString() {
-		
-		String dateString = new SimpleDateFormat("yyyy-MM-dd").format(date_of_birth);
-
-		
 		return "Patient [id=" + id + ", last_name=" + last_name + ", first_name=" + first_name + ", address=" + address
-				+ ", date_of_birth=" + dateString + ", tel_num=" + tel_num + ", cell_num=" + cell_num + "]";
-	}  
-
+				+ ", date_of_birth=" + date_of_birth + ", tel_num=" + tel_num + ", cell_num=" + cell_num + "]";
+	}
 	
 }

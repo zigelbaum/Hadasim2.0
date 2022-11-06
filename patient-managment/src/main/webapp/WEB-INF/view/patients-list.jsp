@@ -54,7 +54,6 @@
 		
 		<br/>
 	
-	
 	<form action="showInjection">
 			<input type="submit" value="Injections">
 		</form>
@@ -66,7 +65,6 @@
 		</form>
 		
 		</div>
-
 
 </body>
 </html>

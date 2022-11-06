@@ -37,6 +37,11 @@
 			<form:input path="address" />
 
 			<br />
+			
+			<label>Date of Birth : </label>
+			<form:input path="date_of_birth" />
+
+			<br />
 
 			<label>Tel_num : </label>
 			<form:input path="tel_num" />

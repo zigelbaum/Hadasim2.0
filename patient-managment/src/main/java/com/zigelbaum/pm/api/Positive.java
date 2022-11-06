@@ -1,7 +1,7 @@
 package com.zigelbaum.pm.api;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.sql.Date;
 
 public class Positive {
 	
